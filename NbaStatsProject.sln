@@ -7,7 +7,7 @@ Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "nbastatsproject.client", "n
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NbaStatsProject.Server", "NbaStatsProject.Server\NbaStatsProject.Server.csproj", "{D0B7836E-FF63-4368-81A9-C439AFA4D253}"
 EndProject
-Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "NbaStatsImporter", "Integration Services Project1\Integration Services Project1\NbaStatsImporter.dtproj", "{EAB20C2A-D7EA-8DCC-98D4-DEC5F54EA05E}"
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "NbaStatsImporter", "NbaStatsImporter\Integration Services Project1\NbaStatsImporter.dtproj", "{5691211A-A53F-D4CC-59DD-5E0C05118C8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,12 +31,12 @@ Global
 		{D0B7836E-FF63-4368-81A9-C439AFA4D253}.Development|Any CPU.Build.0 = Release|Any CPU
 		{D0B7836E-FF63-4368-81A9-C439AFA4D253}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0B7836E-FF63-4368-81A9-C439AFA4D253}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EAB20C2A-D7EA-8DCC-98D4-DEC5F54EA05E}.Debug|Any CPU.ActiveCfg = Development
-		{EAB20C2A-D7EA-8DCC-98D4-DEC5F54EA05E}.Debug|Any CPU.Build.0 = Development
-		{EAB20C2A-D7EA-8DCC-98D4-DEC5F54EA05E}.Development|Any CPU.ActiveCfg = Development
-		{EAB20C2A-D7EA-8DCC-98D4-DEC5F54EA05E}.Development|Any CPU.Build.0 = Development
-		{EAB20C2A-D7EA-8DCC-98D4-DEC5F54EA05E}.Release|Any CPU.ActiveCfg = Development
-		{EAB20C2A-D7EA-8DCC-98D4-DEC5F54EA05E}.Release|Any CPU.Build.0 = Development
+		{5691211A-A53F-D4CC-59DD-5E0C05118C8A}.Debug|Any CPU.ActiveCfg = Development
+		{5691211A-A53F-D4CC-59DD-5E0C05118C8A}.Debug|Any CPU.Build.0 = Development
+		{5691211A-A53F-D4CC-59DD-5E0C05118C8A}.Development|Any CPU.ActiveCfg = Development
+		{5691211A-A53F-D4CC-59DD-5E0C05118C8A}.Development|Any CPU.Build.0 = Development
+		{5691211A-A53F-D4CC-59DD-5E0C05118C8A}.Release|Any CPU.ActiveCfg = Development
+		{5691211A-A53F-D4CC-59DD-5E0C05118C8A}.Release|Any CPU.Build.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
