@@ -1,0 +1,20 @@
+<table border="1" cellpadding="5">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Position</th>
+      <th>Points</th>
+      <th>Rebounds</th>
+      <th>Assists</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let player of players">
+      <td>{{ player.fullName }}</td>
+      <td>{{ player.position }}</td>
+      <td>{{ player.pointsPerGame }}</td>
+      <td>{{ player.reboundsPerGame }}</td>
+      <td>{{ player.assistsPerGame }}</td>
+    </tr>
+  </tbody>
+</table>
