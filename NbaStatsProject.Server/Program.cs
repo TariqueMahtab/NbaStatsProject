@@ -4,20 +4,23 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using NbaStatsProject.Server.Data;
 using NbaStatsProject.Server.Models;
+using NbaStatsProject.Server.Services;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add DbContext
+// --- Configure Services ---
+
+// Database context
 builder.Services.AddDbContext<NbaStatsDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Add Identity
+// Identity configuration
 builder.Services.AddIdentity<NbaStatsUser, IdentityRole>()
     .AddEntityFrameworkStores<NbaStatsDbContext>()
     .AddDefaultTokenProviders();
 
-// Add JWT Authentication
+// JWT Authentication
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -25,37 +28,29 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
+    options.RequireHttpsMetadata = false;
+    options.SaveToken = true;
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
-        ValidateAudience = true,
+        ValidateAudience = false,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
         ValidIssuer = builder.Configuration["Jwt:Issuer"],
-        ValidAudience = builder.Configuration["Jwt:Issuer"],
         IssuerSigningKey = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+            Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
     };
 });
 
-// Add CORS
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(policy =>
-        policy
-            .AllowAnyOrigin()
-            .AllowAnyHeader()
-            .AllowAnyMethod());
-});
-
-// Add controllers & Swagger
+// Additional services
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<ExcelImportService>();
 
 var app = builder.Build();
 
-app.UseCors();
+// --- Configure Middleware ---
 
 if (app.Environment.IsDevelopment())
 {
@@ -64,11 +59,18 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-// 👇 These must come before MapControllers
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// --- Excel Data Import at Startup ---
+async Task ImportDataAsync()
+{
+    using var scope = app.Services.CreateScope();
+    var importService = scope.ServiceProvider.GetRequiredService<ExcelImportService>();
+    await importService.ImportPlayersFromExcel("Data/NbaPlayerStats.xlsx");
+}
+await ImportDataAsync();
 
 app.Run();

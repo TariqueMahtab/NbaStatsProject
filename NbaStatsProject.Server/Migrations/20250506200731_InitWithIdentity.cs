@@ -6,113 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace NbaStatsProject.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class AddIdentitySupport : Migration
+    public partial class InitWithIdentity : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Players_Teams_TeamId",
-                table: "Players");
-
-            migrationBuilder.DropTable(
-                name: "Teams");
-
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_Players",
-                table: "Players");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Players_TeamId",
-                table: "Players");
-
-            migrationBuilder.DropColumn(
-                name: "AssistsPerGame",
-                table: "Players");
-
-            migrationBuilder.DropColumn(
-                name: "PointsPerGame",
-                table: "Players");
-
-            migrationBuilder.DropColumn(
-                name: "ReboundsPerGame",
-                table: "Players");
-
-            migrationBuilder.DropColumn(
-                name: "TeamId",
-                table: "Players");
-
-            //migrationBuilder.RenameTable(
-            //    name: "Players",
-            //    newName: "PlayerStats");
-
-            //migrationBuilder.RenameColumn(
-            //    name: "FullName",
-            //    table: "PlayerStats",
-            //    newName: "Team");
-
-            migrationBuilder.DropPrimaryKey(
-       name: "PK_PlayerStats",
-       table: "PlayerStats");
-
-            migrationBuilder.DropColumn(
-                name: "Id",
-                table: "PlayerStats");
-
-            migrationBuilder.AddColumn<double>(
-                name: "Id",
-                table: "PlayerStats",
-                type: "float",
-                nullable: false,
-                defaultValue: 0.0);
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_PlayerStats",
-                table: "PlayerStats",
-                column: "Id");
-
-            migrationBuilder.AddColumn<double>(
-                name: "Assists",
-                table: "PlayerStats",
-                type: "float",
-                nullable: true);
-
-            migrationBuilder.AddColumn<double>(
-                name: "GamesPlayed",
-                table: "PlayerStats",
-                type: "float",
-                nullable: true);
-
-            migrationBuilder.AddColumn<double>(
-                name: "MinutesPlayed",
-                table: "PlayerStats",
-                type: "float",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "PlayerName",
-                table: "PlayerStats",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
-
-            migrationBuilder.AddColumn<double>(
-                name: "Points",
-                table: "PlayerStats",
-                type: "float",
-                nullable: true);
-
-            migrationBuilder.AddColumn<double>(
-                name: "Rebounds",
-                table: "PlayerStats",
-                type: "float",
-                nullable: true);
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_PlayerStats",
-                table: "PlayerStats",
-                column: "Id");
-
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -150,6 +48,25 @@ namespace NbaStatsProject.Server.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PlayerStats",
+                columns: table => new
+                {
+                    Id = table.Column<double>(type: "float", nullable: false),
+                    PlayerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Team = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Position = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GamesPlayed = table.Column<double>(type: "float", nullable: true),
+                    MinutesPlayed = table.Column<double>(type: "float", nullable: true),
+                    Points = table.Column<double>(type: "float", nullable: true),
+                    Assists = table.Column<double>(type: "float", nullable: true),
+                    Rebounds = table.Column<double>(type: "float", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PlayerStats", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -317,116 +234,13 @@ namespace NbaStatsProject.Server.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "PlayerStats");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_PlayerStats",
-                table: "PlayerStats");
-
-            migrationBuilder.DropColumn(
-                name: "Assists",
-                table: "PlayerStats");
-
-            migrationBuilder.DropColumn(
-                name: "GamesPlayed",
-                table: "PlayerStats");
-
-            migrationBuilder.DropColumn(
-                name: "MinutesPlayed",
-                table: "PlayerStats");
-
-            migrationBuilder.DropColumn(
-                name: "PlayerName",
-                table: "PlayerStats");
-
-            migrationBuilder.DropColumn(
-                name: "Points",
-                table: "PlayerStats");
-
-            migrationBuilder.DropColumn(
-                name: "Rebounds",
-                table: "PlayerStats");
-
-            migrationBuilder.RenameTable(
-                name: "PlayerStats",
-                newName: "Players");
-
-            migrationBuilder.RenameColumn(
-                name: "Team",
-                table: "Players",
-                newName: "FullName");
-
-            migrationBuilder.AlterColumn<int>(
-                name: "Id",
-                table: "Players",
-                type: "int",
-                nullable: false,
-                oldClrType: typeof(double),
-                oldType: "float")
-                .Annotation("SqlServer:Identity", "1, 1");
-
-            migrationBuilder.AddColumn<double>(
-                name: "AssistsPerGame",
-                table: "Players",
-                type: "float",
-                nullable: false,
-                defaultValue: 0.0);
-
-            migrationBuilder.AddColumn<double>(
-                name: "PointsPerGame",
-                table: "Players",
-                type: "float",
-                nullable: false,
-                defaultValue: 0.0);
-
-            migrationBuilder.AddColumn<double>(
-                name: "ReboundsPerGame",
-                table: "Players",
-                type: "float",
-                nullable: false,
-                defaultValue: 0.0);
-
-            migrationBuilder.AddColumn<int>(
-                name: "TeamId",
-                table: "Players",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_Players",
-                table: "Players",
-                column: "Id");
-
-            migrationBuilder.CreateTable(
-                name: "Teams",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Conference = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Teams", x => x.Id);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Players_TeamId",
-                table: "Players",
-                column: "TeamId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Players_Teams_TeamId",
-                table: "Players",
-                column: "TeamId",
-                principalTable: "Teams",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
         }
     }
 }

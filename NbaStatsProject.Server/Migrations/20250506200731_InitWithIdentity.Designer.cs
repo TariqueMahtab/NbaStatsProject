@@ -12,8 +12,8 @@ using NbaStatsProject.Server.Data;
 namespace NbaStatsProject.Server.Migrations
 {
     [DbContext(typeof(NbaStatsDbContext))]
-    [Migration("20250506032521_AddIdentitySupport")]
-    partial class AddIdentitySupport
+    [Migration("20250506200731_InitWithIdentity")]
+    partial class InitWithIdentity
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
