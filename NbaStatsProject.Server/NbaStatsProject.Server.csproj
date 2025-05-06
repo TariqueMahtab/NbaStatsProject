@@ -4,12 +4,12 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<UseProgramMain>true</UseProgramMain>
 		<SpaRoot>..\nbastatsproject.client</SpaRoot>
 		<SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
 		<SpaProxyServerUrl>https://localhost:53605</SpaProxyServerUrl>
 	</PropertyGroup>
 
-	<!-- Make sure your Excel file is copied but not compiled -->
 	<ItemGroup>
 		<Content Include="Data\NbaPlayerStats.xlsx">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -23,6 +23,8 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
 		<PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
 	</ItemGroup>
