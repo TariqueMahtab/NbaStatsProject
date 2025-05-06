@@ -1,0 +1,26 @@
+<table border="1" cellpadding="5">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Team</th>
+      <th>Position</th>
+      <th>Games</th>
+      <th>Minutes</th>
+      <th>Points</th>
+      <th>Rebounds</th>
+      <th>Assists</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of players">
+      <td>{{p.playerName}}</td>
+      <td>{{p.team}}</td>
+      <td>{{p.position}}</td>
+      <td>{{p.gamesPlayed}}</td>
+      <td>{{p.minutesPlayed}}</td>
+      <td>{{p.points}}</td>
+      <td>{{p.rebounds}}</td>
+      <td>{{p.assists}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "NbaStatsImporter", "..\..\584\NbaStatsProject\NbaStatsImporter\Integration Services Project1\NbaStatsImporter.dtproj", "{F53C1BBA-9A41-425A-F555-3090893F217A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F53C1BBA-9A41-425A-F555-3090893F217A}.Development|Default.ActiveCfg = Development
+		{F53C1BBA-9A41-425A-F555-3090893F217A}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0206D3ED-2366-49FB-9DF9-0817D0DA65A6}
+	EndGlobalSection
+EndGlobal
